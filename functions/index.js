@@ -11,10 +11,8 @@ const { onRequest } = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
 const { getFirestore } = require("firebase-admin/firestore");
 const { initializeApp } = require("firebase-admin/app");
-const {
-  onDocumentWritten,
-  onDocumentCreated,
-} = require("firebase-functions/v2/firestore");
+const { onDocumentCreated } = require("firebase-functions/v2/firestore");
+const { beforeUserCreated } = require("firebase-functions/v2/identity");
 // const { getAuth } = require("firebase-admin/auth");
 
 initializeApp();
@@ -75,6 +73,11 @@ exports.createBoat = onRequest(async (request, response) => {
 
 // functions.identity.beforeUserCreated(() => {
 //   console.log("creating user");
+// });
+
+// exports.makeUppercase = beforeUserCreated( (event) => {
+//   logger.log("beforeUserCreated",);
+//   return
 // });
 
 // functions.storage.onObjectFinalized(() => {
